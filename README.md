@@ -1,2 +1,2 @@
 # rps
-Rock Paper Scissors project from TOP
+Third project from TOP - Rock Paper Scissors 

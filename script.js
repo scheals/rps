@@ -1,7 +1,7 @@
 function game(){
     let computerScore = 0;
     let playerScore = 0;
-    let roundCount = 1;
+    let roundCount = 0;
     function computerPlay () {
         const signs = ["rock", "paper", "scissors"]
         let sign = signs[Math.floor(Math.random() * 3)]
@@ -86,6 +86,7 @@ function game(){
         
     }
     function playFive () {
+        console.log(roundCount)
         if (roundCount >= 5) {
             if (playerScore === computerScore){
                     alert(`Huh! You tied. Interesting! Your final score is: You ${playerScore} AI ${computerScore}`) 

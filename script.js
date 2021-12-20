@@ -11,8 +11,9 @@ function game(){
     function playRound (playerSelection, computerSelection = computerPlay ()) {
         console.log(computerSelection)
         if (playerSelection === computerSelection) {
-        // computerScore++
-        // playerScore++
+        // if draws don't grant score it doesn't know when five rounds were played
+        computerScore++
+        playerScore++
         let result = `You chose the same sign! That's a draw. Current score: You ${playerScore} AI ${computerScore}`;
         console.log(result);
         return result;
@@ -78,8 +79,25 @@ function game(){
                 playRound()
                 playToFive()
         }
+        
+    }
+    function playFive () {
+        if ((playerScore + computerScore) >= 5) {
+            if (playerScore === computerScore){
+                    alert(`Huh! You tied. Interesting! Your final score is: You ${playerScore} AI ${computerScore}`) 
+                } else if (playerScore > computerScore) {
+                    alert(`Congratulations! You've won. Your final score is: You ${playerScore} AI ${computerScore}`)
+                } else {
+                alert(`Oh shoot... You've lost. Your final score is: You ${playerScore} AI ${computerScore}`)
+            }
+            }else {
+                console.log(`Five rounds not played yet.`)
+                playRound()
+                playFive()
+        }
+        
     }
 playRound()
-playToFive()
+playFive()
 }
 game();

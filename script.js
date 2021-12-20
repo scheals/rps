@@ -1,7 +1,7 @@
 function game(){
     let computerScore = 0;
     let playerScore = 0;
-
+    let roundCount = 1;
     function computerPlay () {
         const signs = ["rock", "paper", "scissors"]
         let sign = signs[Math.floor(Math.random() * 3)]
@@ -11,9 +11,7 @@ function game(){
     function playRound (playerSelection, computerSelection = computerPlay ()) {
         console.log(computerSelection)
         if (playerSelection === computerSelection) {
-        // if draws don't grant score it doesn't know when five rounds were played
-        computerScore++
-        playerScore++
+        roundCount++;    
         let result = `You chose the same sign! That's a draw. Current score: You ${playerScore} AI ${computerScore}`;
         console.log(result);
         return result;
@@ -28,32 +26,38 @@ function game(){
             return playRound(playerSelection); 
         }
         } else if (playerSelection === "rock" && computerSelection === "scissors"){
-        playerScore++
+        playerScore++;
+        roundCount++;
         let result = `Congratulations! Rock beats Scissors. You've won. Current score: You ${playerScore} AI ${computerScore}`;
         console.log(result);
         return result;
         } else if (playerSelection === "paper" && computerSelection === "rock"){
-        playerScore++
+        playerScore++;
+        roundCount++;
         let result = `Congratulations! Paper beats Rock. You've won. Current score: You ${playerScore} AI ${computerScore}`;
         console.log(result);
         return result;
         } else if (playerSelection === "scissors" && computerSelection === "paper"){
-        playerScore++
+        playerScore++;
+        roundCount++;
         let result = `Congratulations! Scissors beat Paper. You've won. Current score: You ${playerScore} AI ${computerScore}`;
         console.log(result);
         return result;
         } else if (playerSelection === "rock" && computerSelection === "paper"){
-        computerScore++
+        computerScore++;
+        roundCount++;;
         let result = `Whoopsie! Rock got beaten by Paper. You've lost. Current score: You ${playerScore} AI ${computerScore}`;
         console.log(result);
         return result;
         } else if (playerSelection === "paper" && computerSelection === "scissors"){
-        computerScore++
+        computerScore++;
+        roundCount++;
         let result = `Whoopsie! Paper got beaten by Scissors. You've lost. Current score: You ${playerScore} AI ${computerScore}`;
         console.log(result);
         return result;
         } else if (playerSelection === "scissors" && computerSelection === "rock"){
-        computerScore++
+        computerScore++;
+        roundCount++;
         let result = `Whoopsie! Scissors got beaten by Rock. You've lost. Current score: You ${playerScore} AI ${computerScore}`;
         console.log(result);
         return result;
@@ -82,7 +86,7 @@ function game(){
         
     }
     function playFive () {
-        if ((playerScore + computerScore) >= 5) {
+        if (roundCount >= 5) {
             if (playerScore === computerScore){
                     alert(`Huh! You tied. Interesting! Your final score is: You ${playerScore} AI ${computerScore}`) 
                 } else if (playerScore > computerScore) {

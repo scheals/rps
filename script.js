@@ -8,18 +8,24 @@ function game(){
         return sign
     }
 
-    function playRound (playerSelection, computerSelection) {
-        console.log(playerSelection)
+    function playRound (playerSelection, computerSelection = computerPlay ()) {
         console.log(computerSelection)
         if (playerSelection === computerSelection) {
-        computerScore++
-        playerScore++
+        // computerScore++
+        // playerScore++
         let result = `You chose the same sign! That's a draw. Current score: You ${playerScore} AI ${computerScore}`;
         console.log(result);
         return result;
-        } else if (playerSelection === null) {
-        let result = `Those are not the droids you are looking for!`;
-        return result;
+        } else if (playerSelection === undefined) {
+        let playerInput = prompt("Choose wisely!", "Rock, Paper or Scissors?")
+            if (playerInput === null) {
+            let result = "Only rocks, paper and scissors accepted!"
+            return result
+            } else {
+            let playerSelection = playerInput.toLowerCase()
+            console.log(playerSelection)
+            return playRound(playerSelection); 
+        }
         } else if (playerSelection === "rock" && computerSelection === "scissors"){
         playerScore++
         let result = `Congratulations! Rock beats Scissors. You've won. Current score: You ${playerScore} AI ${computerScore}`;
@@ -58,32 +64,22 @@ function game(){
         }
     }
 
-    function playFive () {
+    function playToFive () {
         if (playerScore >= 5 || computerScore >= 5) {
-        }else if (playerScore === computerScore){
-        alert(`Huh! You tied. Interesting! Your final score is: You ${playerScore} AI ${computerScore}`)
-        } else if (playerScore > computerScore) {
-        alert(`Congratulations! You've won. Your final score is: You ${playerScore} AI ${computerScore}`)
-        } else {
-        alert(`Oh shoot... You've lost. Your final score is: You ${playerScore} AI ${computerScore}`)
+            if (playerScore === computerScore){
+                    alert(`Huh! You tied. Interesting! Your final score is: You ${playerScore} AI ${computerScore}`) 
+                } else if (playerScore > computerScore) {
+                    alert(`Congratulations! You've won. Your final score is: You ${playerScore} AI ${computerScore}`)
+                } else {
+                alert(`Oh shoot... You've lost. Your final score is: You ${playerScore} AI ${computerScore}`)
+            }
+            }else {
+                console.log(`Neither of scores is equal or higher to 5.`)
+                playRound()
+                playToFive()
         }
-    
     }
-    playRound(prompt("Choose wisely!", "Rock, Paper or Scissors?").toLowerCase(), computerPlay());
-    console.log(playerScore);
-    console.log(computerScore);
-    playRound(prompt("Choose wisely!", "Rock, Paper or Scissors?").toLowerCase(), computerPlay());
-    console.log(playerScore);
-    console.log(computerScore);
-    playRound(prompt("Choose wisely!", "Rock, Paper or Scissors?").toLowerCase(), computerPlay());
-    console.log(playerScore);
-    console.log(computerScore);
-    playRound(prompt("Choose wisely!", "Rock, Paper or Scissors?").toLowerCase(), computerPlay());
-    console.log(playerScore);
-    console.log(computerScore);
-    playRound(prompt("Choose wisely!", "Rock, Paper or Scissors?").toLowerCase(), computerPlay());
-    console.log(playerScore);
-    console.log(computerScore);
-    playFive()
+playRound()
+playToFive()
 }
 game();

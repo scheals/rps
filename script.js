@@ -2,13 +2,13 @@ function game(){
     let computerScore = 0;
     let playerScore = 0;
     let roundCount = 0;
-    function computerPlay () {
+    function getAISign () {
         const signs = ["rock", "paper", "scissors"]
         let sign = signs[Math.floor(Math.random() * 3)]
         return sign
     }
 
-    function playRound (playerSelection, computerSelection = computerPlay ()) {
+    function playRound (playerSelection, computerSelection = getAISign ()) {
         console.log(computerSelection)
         if (playerSelection === computerSelection) {
         roundCount++;    

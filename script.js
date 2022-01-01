@@ -131,7 +131,7 @@ function resetGame(){
     roundCount = 1;
     playerScore = 0;
     computerScore = 0;
-    result = "Click on one of the buttons to pick your sign!";
+    result = "Game reset. Click on one of the buttons to pick your sign!";
     results.textContent = result;
     return console.log("Round count and scores have been reset.");
 }

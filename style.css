@@ -1,0 +1,48 @@
+* {
+    margin: 0px;
+    padding: 0px;
+
+}
+
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #121212;
+}
+main {
+    display: flex;
+    flex: 1;
+    justify-content: center;
+    background-color: #30475e;
+}
+header {
+    text-align: center;
+    flex: 0;
+    background-color: #F05454;
+}
+footer {
+    flex: 0;
+    font-size: 32px;
+    text-align: center;
+    background-color: #B1D0E0;
+}
+
+section {
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+}
+
+.play-btn {
+    padding: 32px;
+    margin: 16px 8px;
+}
+.reset-btn {
+    padding: 16px;
+    margin: 8px 4px;
+}
+
+.results {
+    min-width: 700px;
+}

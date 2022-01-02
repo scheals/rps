@@ -8,7 +8,10 @@ const results = document.querySelector(".results");
 results.textContent = result;
 const reset = document.querySelector(".reset-btn");
 reset.addEventListener('click', function(){resetGame()})
-
+const playerScoreText = document.querySelector(".player-score");
+playerScoreText.textContent = `Your score: ${playerScore}`;
+const computerScoreText = document.querySelector(".computer-score");
+computerScoreText.textContent = `Computer score: ${computerScore}`;
 function playRound (playerSelection, computerSelection = getAISign ()) {
     if (roundCount > 5) return;
     console.log(computerSelection);
@@ -35,6 +38,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         result = `Congratulations! Rock beats Scissors. You've won. Current score: You ${playerScore} AI ${computerScore}`;
         playFive()
         results.textContent = result;
+        playerScoreText.textContent = `Your score: ${playerScore}`;
         return result;
     } else if (playerSelection === "paper" && computerSelection === "rock"){
         playerScore++;
@@ -42,6 +46,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         result = `Congratulations! Paper beats Rock. You've won. Current score: You ${playerScore} AI ${computerScore}`;
         playFive()
         results.textContent = result;
+        playerScoreText.textContent = `Your score: ${playerScore}`;
         return result;
     } else if (playerSelection === "scissors" && computerSelection === "paper"){
         playerScore++;
@@ -49,6 +54,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         result = `Congratulations! Scissors beat Paper. You've won. Current score: You ${playerScore} AI ${computerScore}`;
         playFive()
         results.textContent = result;
+        playerScoreText.textContent = `Your score: ${playerScore}`;
         return result;
     } else if (playerSelection === "rock" && computerSelection === "paper"){
         computerScore++;
@@ -56,6 +62,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         result = `Whoopsie! Rock got beaten by Paper. You've lost. Current score: You ${playerScore} AI ${computerScore}`;
         playFive()
         results.textContent = result;
+        computerScoreText.textContent = `Computer score: ${computerScore}`;
         return result;
     } else if (playerSelection === "paper" && computerSelection === "scissors"){
         computerScore++;
@@ -63,19 +70,22 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         result = `Whoopsie! Paper got beaten by Scissors. You've lost. Current score: You ${playerScore} AI ${computerScore}`;
         playFive()
         results.textContent = result;
+        computerScoreText.textContent = `Computer score: ${computerScore}`;
         return result;
     } else if (playerSelection === "scissors" && computerSelection === "rock"){
         computerScore++;
         roundCount++;
         result = `Whoopsie! Scissors got beaten by Rock. You've lost. Current score: You ${playerScore} AI ${computerScore}`;
-        results.textContent = result;
         playFive()
+        results.textContent = result;
+        computerScoreText.textContent = `Computer score: ${computerScore}`;
+        
         return result;
     }
     else {
         result = "Only rocks, paper and scissors accepted!";
-        results.textContent = result;
         playFive()
+        results.textContent = result;
         return result;
     }
 }
@@ -133,5 +143,7 @@ function resetGame(){
     computerScore = 0;
     result = "Game reset. Click on one of the buttons to pick your sign!";
     results.textContent = result;
+    playerScoreText.textContent = `Your score: ${playerScore}`;
+    computerScoreText.textContent = `Computer score: ${computerScore}`;
     return console.log("Round count and scores have been reset.");
 }

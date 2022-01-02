@@ -23,7 +23,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
     console.log(computerSelection);
     if (playerSelection === computerSelection) {
         roundCount++;    
-        result = `You chose the same sign! That's a draw. Current score: You ${playerScore} AI ${computerScore}`;
+        result = `You chose the same sign! That's a draw.`;
         playFive()
         results.textContent = result;
         if (playerSelection === "rock") playersChoiceText.textContent = `🪨 `;
@@ -47,7 +47,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
     } else if (playerSelection === "rock" && computerSelection === "scissors"){
         playerScore++;
         roundCount++;
-        result = `Congratulations! Rock beats Scissors. You've won. Current score: You ${playerScore} AI ${computerScore}`;
+        result = `Congratulations! Rock beats Scissors. You've won.`;
         playFive()
         results.textContent = result;
         playerScoreText.textContent = `Your score: ${playerScore}`;
@@ -57,7 +57,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
     } else if (playerSelection === "paper" && computerSelection === "rock"){
         playerScore++;
         roundCount++;
-        result = `Congratulations! Paper beats Rock. You've won. Current score: You ${playerScore} AI ${computerScore}`;
+        result = `Congratulations! Paper beats Rock. You've won.`;
         playFive()
         results.textContent = result;
         playerScoreText.textContent = `Your score: ${playerScore}`;
@@ -67,7 +67,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
     } else if (playerSelection === "scissors" && computerSelection === "paper"){
         playerScore++;
         roundCount++;
-        result = `Congratulations! Scissors beat Paper. You've won. Current score: You ${playerScore} AI ${computerScore}`;
+        result = `Congratulations! Scissors beat Paper. You've won.`;
         playFive()
         results.textContent = result;
         playerScoreText.textContent = `Your score: ${playerScore}`;
@@ -77,7 +77,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
     } else if (playerSelection === "rock" && computerSelection === "paper"){
         computerScore++;
         roundCount++;;
-        result = `Whoopsie! Rock got beaten by Paper. You've lost. Current score: You ${playerScore} AI ${computerScore}`;
+        result = `Whoopsie! Rock got beaten by Paper. You've lost.`;
         playFive()
         results.textContent = result;
         computerScoreText.textContent = `Computer score: ${computerScore}`;
@@ -87,7 +87,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
     } else if (playerSelection === "paper" && computerSelection === "scissors"){
         computerScore++;
         roundCount++;
-        result = `Whoopsie! Paper got beaten by Scissors. You've lost. Current score: You ${playerScore} AI ${computerScore}`;
+        result = `Whoopsie! Paper got beaten by Scissors. You've lost.`;
         playFive()
         results.textContent = result;
         computerScoreText.textContent = `Computer score: ${computerScore}`;
@@ -97,7 +97,7 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
     } else if (playerSelection === "scissors" && computerSelection === "rock"){
         computerScore++;
         roundCount++;
-        result = `Whoopsie! Scissors got beaten by Rock. You've lost. Current score: You ${playerScore} AI ${computerScore}`;
+        result = `Whoopsie! Scissors got beaten by Rock. You've lost.`;
         playFive()
         results.textContent = result;
         computerScoreText.textContent = `Computer score: ${computerScore}`;

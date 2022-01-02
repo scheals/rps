@@ -12,6 +12,10 @@ const playerScoreText = document.querySelector(".player-score");
 playerScoreText.textContent = `Your score: ${playerScore}`;
 const computerScoreText = document.querySelector(".computer-score");
 computerScoreText.textContent = `Computer score: ${computerScore}`;
+const playerChoiceText = document.querySelector(".player-choice-text");
+playerChoiceText.textContent = `You chose: `;
+const computerChoiceText = document.querySelector(".computer-choice-text");
+computerChoiceText.textContent = `Computer chose: `;
 function playRound (playerSelection, computerSelection = getAISign ()) {
     if (roundCount > 5) return;
     console.log(computerSelection);
@@ -20,6 +24,12 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         result = `You chose the same sign! That's a draw. Current score: You ${playerScore} AI ${computerScore}`;
         playFive()
         results.textContent = result;
+        if (playerSelection === "rock") playerChoiceText.textContent = `You chose: 🪨`;
+        if (playerSelection === "paper") playerChoiceText.textContent = `You chose: 🧻`;
+        if (playerSelection === "scissors") playerChoiceText.textContent = `You chose: ✂`;
+        if (computerSelection === "rock") computerChoiceText.textContent = `Computer chose: 🪨`;
+        if (computerSelection === "paper") computerChoiceText.textContent = `Computer chose: 🧻`;
+        if (computerSelection === "scissors") computerChoiceText.textContent = `Computer chose: ✂`;
         return result;
     } else if (playerSelection === undefined) {
         let playerInput = prompt("Choose wisely!", "Rock, Paper or Scissors?")
@@ -39,6 +49,8 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         playFive()
         results.textContent = result;
         playerScoreText.textContent = `Your score: ${playerScore}`;
+        playerChoiceText.textContent = `You chose: 🪨`;
+        computerChoiceText.textContent = `Computer chose: ✂`;
         return result;
     } else if (playerSelection === "paper" && computerSelection === "rock"){
         playerScore++;
@@ -47,6 +59,8 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         playFive()
         results.textContent = result;
         playerScoreText.textContent = `Your score: ${playerScore}`;
+        playerChoiceText.textContent = `You chose: 🧻`;
+        computerChoiceText.textContent = `Computer chose: 🪨`;
         return result;
     } else if (playerSelection === "scissors" && computerSelection === "paper"){
         playerScore++;
@@ -55,6 +69,8 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         playFive()
         results.textContent = result;
         playerScoreText.textContent = `Your score: ${playerScore}`;
+        playerChoiceText.textContent = `You chose: ✂`;
+        computerChoiceText.textContent = `Computer chose: 🧻`;
         return result;
     } else if (playerSelection === "rock" && computerSelection === "paper"){
         computerScore++;
@@ -63,6 +79,8 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         playFive()
         results.textContent = result;
         computerScoreText.textContent = `Computer score: ${computerScore}`;
+        playerChoiceText.textContent = `You chose: 🪨`;
+        computerChoiceText.textContent = `Computer chose: 🧻`;
         return result;
     } else if (playerSelection === "paper" && computerSelection === "scissors"){
         computerScore++;
@@ -71,6 +89,8 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         playFive()
         results.textContent = result;
         computerScoreText.textContent = `Computer score: ${computerScore}`;
+        playerChoiceText.textContent = `You chose: 🧻`;
+        computerChoiceText.textContent = `Computer chose: ✂`;
         return result;
     } else if (playerSelection === "scissors" && computerSelection === "rock"){
         computerScore++;
@@ -79,7 +99,8 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         playFive()
         results.textContent = result;
         computerScoreText.textContent = `Computer score: ${computerScore}`;
-        
+        playerChoiceText.textContent = `You chose: ✂`;
+        computerChoiceText.textContent = `Computer chose: 🪨`;
         return result;
     }
     else {
@@ -145,5 +166,7 @@ function resetGame(){
     results.textContent = result;
     playerScoreText.textContent = `Your score: ${playerScore}`;
     computerScoreText.textContent = `Computer score: ${computerScore}`;
+    playerChoiceText.textContent = `You chose: `;
+    computerChoiceText.textContent = `Computer chose: `;
     return console.log("Round count and scores have been reset.");
 }

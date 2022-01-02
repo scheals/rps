@@ -12,29 +12,31 @@
 <main>
     <section>
         <div class = "scores">
-            <p class= "player-score">Your score: </p> 
-            <p class = "computer-score">Computer score: </p>
+            <h3 class= "player-score">Your score: </h3> 
+            <h3 class = "computer-score">Computer score: </h3>
         </div>
+        <h2 class = "results"></h2>
         <div class = "game-UI">
-            <div class = "player-display">
                 <div class = "play-btns">
                     <button class="play-btn" data-sign="rock"><p>Rock</p></button>
                     <button class="play-btn" data-sign="paper"><p>Paper</p></button>
                     <button class="play-btn" data-sign="scissors"><p>Scissors</p></button>
                 </div>
-                <p class = "player-choice-text">You chose:</p>
-                <p class = "player-choice-icon"></p>
-            </div>
-            <div class = "computer-display">
-                <p class = "computer-choice-text">Computer chose: </p>
-                <p class = "computer-choice-icon"></p>
-            </div>
+                <div class = "choices">
+                    <p class = "player-choice-text">Your choice was </p>
+                    <p class = "players-choice-icons">a</p>
+                    <p class = "computer-choice-text"> was computer's choice</p>
+                </div>
+                <div class = "game-log">
+                    <h3 class = "game-log-header">Game log:</h3>
+                    <p class ="game-log-text">Round 1:</p>
+                </div>
         </div>
-        <p class = "results"></p>
+        
         <div class = "settings-btns">
             <button class="reset-btn"><p>Reset</p></button>
         </div>
-        <div class = "game-log"><p class ="game-log-text">Turn 1:</p></div>
+
     </section>
 </main>
 

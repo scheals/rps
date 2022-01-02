@@ -38,7 +38,6 @@ section {
 .play-btn {
     padding: 32px;
     margin: 16px 8px;
-    display: block;
     min-width: 120px;
     text-align: center;
 }
@@ -60,5 +59,24 @@ section {
 .game-UI {
     flex: 1;
     display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.choices {
+    display: flex;
     justify-content: space-between;
+    gap: 36px;
+}
+.player-choice-text,
+.computer-choice-text {
+    display: inline;
+    flex: 1 2 0;
+}
+.player-choice-icons {
+    flex: 1 1 0;
+    text-align: center;
+}
+.game-log-text {
+    margin-top: 8px;
+    text-align: center;
 }

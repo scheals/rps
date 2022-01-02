@@ -1,14 +1,16 @@
+@import url('https://fonts.googleapis.com/css2?family=Oswald:wght@200;300;400;500;600;700&display=swap');
+
 * {
     margin: 0px;
     padding: 0px;
 
 }
-
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh;
     background-color: #121212;
+    font-family: 'Oswald', sans-serif;
 }
 main {
     display: flex;
@@ -64,19 +66,32 @@ section {
 }
 .choices {
     display: flex;
-    justify-content: space-between;
-    gap: 36px;
+    align-items: center;
+    justify-content: center;
+    min-width: 420px;
 }
 .player-choice-text,
 .computer-choice-text {
-    display: inline;
-    flex: 1 2 0;
+    display: inline-block;
+    flex: 1 0 0;
 }
-.player-choice-icons {
-    flex: 1 1 0;
+.computer-choice-text {
+    text-align: end;
+}
+.players-choice-icons {
+    flex: 3 1 0;
     text-align: center;
+    font-size: 32px;
 }
 .game-log-text {
     margin-top: 8px;
     text-align: center;
+}
+.results,
+.choices,
+.game-log {
+    color:#B1D0E0;
+}
+.scores {
+    color:rgb(17, 39, 39)
 }

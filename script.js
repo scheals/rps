@@ -14,6 +14,10 @@ const computerScoreText = document.querySelector(".computer-score");
 computerScoreText.textContent = `Computer score: ${computerScore}`;
 const playersChoiceText = document.querySelector(".players-choice-icons");
 playersChoiceText.textContent = `Nothing chosen so far!`;
+const gameLog = document.querySelector(".game-log");
+
+
+
 function playRound (playerSelection, computerSelection = getAISign ()) {
     if (roundCount > 5) return;
     console.log(computerSelection);

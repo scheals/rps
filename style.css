@@ -98,5 +98,12 @@ section {
     color:#B1D0E0;
 }
 .scores {
-    color:rgb(17, 39, 39)
+    color:rgb(17, 39, 39);
+    background-color: #B1D0E0;
+}
+.game-log {
+    text-align: center;
+    background-color: #B1D0E0;
+    color: black;
+    min-width: 500px;
 }

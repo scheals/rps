@@ -1,6 +1,8 @@
 let computerScore = 0;
 let playerScore = 0;
 let roundCount = 1;
+let gameCount = 1;
+let wasCleanedUp = true;
 let result = "Click on one of the buttons to pick your sign!"
 const playButtons = document.querySelectorAll(".play-btn");
 playButtons.forEach(element => attachPlayRound(element));
@@ -14,19 +16,13 @@ const computerScoreText = document.querySelector(".computer-score");
 computerScoreText.textContent = `Computer score: ${computerScore}`;
 const playersChoiceText = document.querySelector(".players-choice-icons");
 playersChoiceText.textContent = `Nothing chosen so far!`;
-const gameLog = document.querySelector(".game-log");
-function logRound (result){
-    const p = document.createElement('p');
-    p.textContent = `${result}` + ` Current score: You ${playerScore} Computer ${computerScore}`;
-    gameLog.appendChild(p);
-}
 
 function playRound (playerSelection, computerSelection = getAISign ()) {
     if (roundCount > 5) return;
-    console.log(computerSelection);
     if (playerSelection === computerSelection) {
-        roundCount++;    
         result = `You chose the same sign! That's a draw.`;
+        logRound(result);
+        roundCount++;    
         playFive()
         results.textContent = result;
         if (playerSelection === "rock") playersChoiceText.textContent = `🪨 `;
@@ -49,8 +45,9 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
     }
     } else if (playerSelection === "rock" && computerSelection === "scissors"){
         playerScore++;
-        roundCount++;
         result = `Congratulations! Rock beats Scissors. You've won.`;
+        logRound(result);
+        roundCount++;
         playFive()
         results.textContent = result;
         playerScoreText.textContent = `Your score: ${playerScore}`;
@@ -59,8 +56,9 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         return result;
     } else if (playerSelection === "paper" && computerSelection === "rock"){
         playerScore++;
-        roundCount++;
         result = `Congratulations! Paper beats Rock. You've won.`;
+        logRound(result);
+        roundCount++;
         playFive()
         results.textContent = result;
         playerScoreText.textContent = `Your score: ${playerScore}`;
@@ -69,8 +67,9 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         return result;
     } else if (playerSelection === "scissors" && computerSelection === "paper"){
         playerScore++;
-        roundCount++;
         result = `Congratulations! Scissors beat Paper. You've won.`;
+        logRound(result);
+        roundCount++;
         playFive()
         results.textContent = result;
         playerScoreText.textContent = `Your score: ${playerScore}`;
@@ -79,8 +78,9 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         return result;
     } else if (playerSelection === "rock" && computerSelection === "paper"){
         computerScore++;
-        roundCount++;;
         result = `Whoopsie! Rock got beaten by Paper. You've lost.`;
+        logRound(result);
+        roundCount++;;
         playFive()
         results.textContent = result;
         computerScoreText.textContent = `Computer score: ${computerScore}`;
@@ -89,8 +89,9 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         return result;
     } else if (playerSelection === "paper" && computerSelection === "scissors"){
         computerScore++;
-        roundCount++;
         result = `Whoopsie! Paper got beaten by Scissors. You've lost.`;
+        logRound(result);
+        roundCount++;
         playFive()
         results.textContent = result;
         computerScoreText.textContent = `Computer score: ${computerScore}`;
@@ -99,8 +100,9 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
         return result;
     } else if (playerSelection === "scissors" && computerSelection === "rock"){
         computerScore++;
-        roundCount++;
         result = `Whoopsie! Scissors got beaten by Rock. You've lost.`;
+        logRound(result);
+        roundCount++;
         playFive()
         results.textContent = result;
         computerScoreText.textContent = `Computer score: ${computerScore}`;
@@ -116,30 +118,21 @@ function playRound (playerSelection, computerSelection = getAISign ()) {
     }
 }
 
-function getAISign () {
-    const signs = ["rock", "paper", "scissors"]
-    let sign = signs[Math.floor(Math.random() * 3)]
-    return sign
-}
-
-function attachPlayRound(element){
-    return element.addEventListener('click', function(){playRound(`${element.dataset.sign}`)});
-    
-}
-
 function playFive () {
-    console.log(roundCount)
     if (roundCount > 5) {
         if (playerScore === computerScore){
             result = `Huh! You tied. Interesting! Your final score is: You ${playerScore} AI ${computerScore}`;
+            logRound(result);
             results.textContent = result;
                 return result;
             } else if (playerScore > computerScore) {
                 result = `Congratulations! You've won. Your final score is: You ${playerScore} AI ${computerScore}`;
+                logRound(result);
                 results.textContent = result;
                 return result;
             } else {
                 result = `Oh shoot... You've lost. Your final score is: You ${playerScore} AI ${computerScore}`;
+                logRound(result);
                 results.textContent = result;
             return result;
         }
@@ -173,4 +166,49 @@ function resetGame(){
     computerScoreText.textContent = `Computer score: ${computerScore}`;
     playersChoiceText.textContent = `Nothing chosen so far!`;
     return console.log("Round count and scores have been reset.");
+}
+
+function logRound (result){
+    const gameLog = document.querySelector(".game-log");
+    console.log(gameCount);
+    if ((gameCount % 3 === 0) && (wasCleanedUp === false)) {
+        const logEntries = document.querySelectorAll('.game-log-entry');
+        logEntries.forEach(element => gameLog.removeChild(element));
+        wasCleanedUp = true;
+        }
+        if ((gameCount % 3) !== 0) wasCleanedUp = false;
+    if (roundCount === 1) {
+        const gameNumber = document.createElement('p');
+        gameNumber.textContent = `Game ${gameCount}`;
+        gameNumber.setAttribute('class', 'game-log-entry');
+        gameLog.appendChild(gameNumber);
+    }
+    if (roundCount <= 5) { 
+        const roundNumber = document.createElement('p');
+        const roundResult = document.createElement('p');
+        roundNumber.textContent = `Round ${roundCount}`;
+        roundResult.textContent = `${result}`
+        + ` Current score: You ${playerScore} Computer ${computerScore}`;
+        roundNumber.setAttribute('class', 'game-log-entry');
+        roundResult.setAttribute('class', 'game-log-entry');
+        gameLog.appendChild(roundNumber);
+        gameLog.appendChild(roundResult);
+    } else {
+        const roundResult = document.createElement('p');
+        roundResult.textContent = `${result}`;
+        roundResult.setAttribute('class', 'game-log-entry');
+        gameLog.appendChild(roundResult);
+        gameCount++;
+    }
+}
+
+function getAISign () {
+    const signs = ["rock", "paper", "scissors"]
+    let sign = signs[Math.floor(Math.random() * 3)]
+    return sign
+}
+
+function attachPlayRound(element){
+    return element.addEventListener('click', function(){playRound(`${element.dataset.sign}`)});
+    
 }

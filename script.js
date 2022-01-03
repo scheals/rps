@@ -10,6 +10,8 @@ const results = document.querySelector(".results");
 results.textContent = result;
 const reset = document.querySelector(".reset-btn");
 reset.addEventListener('click', function(){resetGame()})
+const cleanup = document.querySelector(".cleanup-btn");
+cleanup.addEventListener('click', function(){cleanupLog()})
 const playerScoreText = document.querySelector(".player-score");
 playerScoreText.textContent = `Your score: ${playerScore}`;
 const computerScoreText = document.querySelector(".computer-score");
@@ -134,7 +136,7 @@ function playFive () {
                 result = `Oh shoot... You've lost. Your final score is: You ${playerScore} AI ${computerScore}`;
                 logRound(result);
                 results.textContent = result;
-            return result;
+                return result;
         }
     }else {
         console.log(`Five rounds not played yet.`)
@@ -145,14 +147,23 @@ function playFive () {
 function playToFive () {
     if (playerScore >= 5 || computerScore >= 5) {
         if (playerScore === computerScore){
-                alert(`Huh! You tied. Interesting! Your final score is: You ${playerScore} AI ${computerScore}`) 
-            } else if (playerScore > computerScore) {
-                alert(`Congratulations! You've won. Your final score is: You ${playerScore} AI ${computerScore}`)
-            } else {
-            alert(`Oh shoot... You've lost. Your final score is: You ${playerScore} AI ${computerScore}`)
+            result = `Huh! You tied. Interesting! Your final score is: You ${playerScore} AI ${computerScore}`;
+            logRound(result);
+            results.textContent = result;
+            return result; 
+        } else if (playerScore > computerScore) {
+            result = `Congratulations! You've won. Your final score is: You ${playerScore} AI ${computerScore}`;
+            logRound(result);
+            results.textContent = result;
+            return result;
+        } else {
+            result = `Oh shoot... You've lost. Your final score is: You ${playerScore} AI ${computerScore}`;
+            logRound(result);
+            results.textContent = result;
+            return result;
         }
-        }else {
-            console.log(`Neither of scores is equal or higher to 5.`)
+    }else {
+        console.log(`Neither of scores is equal or higher to 5.`)
     }
 }
 
@@ -167,7 +178,11 @@ function resetGame(){
     playersChoiceText.textContent = `Nothing chosen so far!`;
     return console.log("Round count and scores have been reset.");
 }
-
+function cleanupLog() {
+    const gameLog = document.querySelector(".game-log");
+    const logEntries = document.querySelectorAll('.game-log-entry');
+    logEntries.forEach(element => gameLog.removeChild(element));
+}
 function logRound (result){
     const gameLog = document.querySelector(".game-log");
     console.log(gameCount);

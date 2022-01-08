@@ -53,7 +53,8 @@ section {
     max-height: 340px;
 }
 .reset-btn,
-.cleanup-btn {
+.cleanup-btn,
+.round-settings-btn {
     padding: 16px;
     margin: 4px 4px;
     font-family: 'Oswald', sans-serif;
